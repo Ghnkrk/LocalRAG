@@ -120,3 +120,7 @@ python benchmark.py "Explain the attendance system" --rag --runs 3
 *   **add_to_db.py**: Main ingestion entry point.
 *   **infer.py**: Main RAG and LLM interaction module.
 *   **benchmark.py**: Latency and throughput testing utility.
+
+  ## Example inference
+  <img width="999" height="513" alt="image" src="https://github.com/user-attachments/assets/7e0829a1-2754-47fa-bbb9-9a36472dbd5d" />
+
