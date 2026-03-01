@@ -1,0 +1,44 @@
+============================================================
+RAG Pipeline Benchmark
+============================================================
+Query: Which semester has Digital Signal Processing?...
+Collection: documents
+Top-K: 3
+ADE: Enabled
+============================================================
+
+1. Generating query embedding...
+Loading local embedding model from: /home/ghn/ai/embed_models/all-MiniLM-L6-v2
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: /home/ghn/ai/embed_models/all-MiniLM-L6-v2
+Loading weights: 100%|█| 103/103 [00:00<00:00, 3890.78it/s, Materializing param=pooler.dense.weight
+Model loaded. Embedding dimension: 384
+Batches: 100%|██████████████████████████████████████████████████████| 1/1 [00:00<00:00, 123.86it/s]
+   ✓ Query Embedding: 155.20ms
+2. Searching vector database...
+   ✓ Vector Search: 1.11ms (3 results)
+3. Retrieving ADE structured facts...
+   ✓ ADE Retrieval: 1.71ms (3 entities, 3 rules)
+3b. Retrieving Fact Store facts...
+   ✓ Fact Store Retrieval: 0.74ms (4 facts)
+4. Building context...
+   ✓ Context Building: 0.04ms (2732 chars total)
+5. Generating LLM response...
+Loading LLM from: /home/ghn/ai/models/qwen2.5-3b-instruct-q6_k.gguf
+llama_context: n_ctx_per_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+LLM loaded successfully
+   ✓ LLM Generation: 47052.34ms
+      - Time to first token: 46674.54ms
+      - Tokens generated: 3
+      - Tokens/sec: 7.94
+
+============================================================
+SUMMARY
+============================================================
+Total Pipeline Time: 47211.15ms (47.21s)
+  - Embedding: 155.20ms
+  - Vector Search: 1.11ms
+  - ADE Retrieval: 1.71ms (0.0%)
+  - Fact Store: 0.74ms (0.0%)
+  - Context Build: 0.04ms
+  - LLM Generation: 47052.34ms (99.7%)
+============================================================
